@@ -38,7 +38,21 @@ const showCategoris = (categories) => {
 // create videos container
 const showVideos = (videos) => {
   const videoContainer = document.querySelector("#video-container");
-  videoContainer.innerHTML = ''
+  videoContainer.innerHTML = "";
+  if (videos.length === 0) {
+    videoContainer.classList.remove('grid')
+    videoContainer.innerHTML = `
+    <div class=" flex flex-col gap-4 justify-center items-center h-[300px]">
+    <img src="../assets/Icon.png"/>
+    <h2 class="text-xl font-bold">
+    No Contetnt Here
+    </h2>
+    </div>
+    `;
+  }
+  else{
+    videoContainer.classList.add('grid')
+  }
   videos.forEach((video) => {
     const card = document.createElement("div");
     card.classList = "card bg-base-100";
